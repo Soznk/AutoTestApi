@@ -5,6 +5,16 @@ import pytz
 app = FastAPI()
 
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the AutoTestApi!"}
+
+
+@app.get("/hello")
+def hello():
+    return {"message": "hello!"}
+
+
 @app.get("/santiago-time")
 def get_santiago_time():
     # 获取当前的UTC时间
@@ -18,8 +28,3 @@ def get_santiago_time():
 
     # 返回圣地亚哥时间
     return {"santiago_time": santiago_time.strftime("%Y-%m-%d %H:%M:%S %Z%z")}
-
-
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the AutoTestApi!"}
